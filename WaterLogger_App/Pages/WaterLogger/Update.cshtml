@@ -1,0 +1,44 @@
+﻿@page
+@model HabitLogger_App.Pages.WaterLogger.UpdateModel
+@{
+    ViewData["Title"] = "Update Page";
+}
+<h4>Update Record</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="POST">
+            <input type="hidden" asp-for="DrinkingWater.Id">
+            <div class="form-group">
+                <label asp-for="DrinkingWater.Date" class="control-label"></label>
+                <input type="date" asp-for="DrinkingWater.Date" class="form-control" value="@Model.DrinkingWater.Date.ToString("yyyy-MM-dd")" />
+                @* <input type="date" asp-for="DrinkingWater.Date" class="form-control" /> *@
+                <span asp-validation-for="DrinkingWater.Date"  class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DrinkingWater.Quantity" class="control-label"></label>
+                <input type="number" asp-for="DrinkingWater.Quantity" class="form-control" />
+                <span asp-validation-for="DrinkingWater.Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DrinkingWater.ContainerType" class="control-label"></label>
+                <select asp-for="DrinkingWater.ContainerType" asp-items="Model.ContainerTypeList" class="form-control">
+                    <option value="">-- Select Container Type --</option>
+                </select>
+                <span asp-validation-for="DrinkingWater.ContainerType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

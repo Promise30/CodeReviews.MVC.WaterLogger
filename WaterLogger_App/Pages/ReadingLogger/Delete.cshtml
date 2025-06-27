@@ -1,0 +1,32 @@
+﻿@page
+@model HabitLogger_App.Pages.ReadingLogger.DeleteModel
+@{
+    ViewData["Title"] = "Delete Reading Log Entry";
+}
+<h3>Are you sure you want to delete this reading log entry?</h3>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ReadingLog.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ReadingLog.Date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ReadingLog.PagesRead)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ReadingLog.PagesRead)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ReadingLog.MinutesRead)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ReadingLog.MinutesRead)
+        </dd>
+    </dl>
+    <form method="POST">
+        <input type="hidden" asp-for="ReadingLog.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /><br />
+        <a class="btn btn-secondary" asp-area="" asp-page="/ReadingLogger/Index">Back to List</a>
+    </form>

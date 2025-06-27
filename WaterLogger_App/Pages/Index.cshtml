@@ -1,0 +1,18 @@
+﻿@page
+@model HabitLogger_App.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h2>
+    Welcome to the Habit Tracker App!
+</h2>
+<p>
+    This app helps you track your daily habits and stay motivated. You can log your water intake, reading progress, and more.
+</p>
+<p>
+    Use the navigation menu to explore different features of the app.
+</p>
+<div class="align-content-center">
+    <a class="btn btn-primary" asp-area="" asp-page="/WaterLogger/Index">Go to Water Logger</a>
+    <a class="btn btn-secondary" asp-area="" asp-page="/Books/Index">Go to Reading Logger</a>
+</div>

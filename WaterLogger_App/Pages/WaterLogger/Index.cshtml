@@ -1,0 +1,70 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Water Logger";
+}
+<h1>Water Logger</h1>
+<p>Welcome to the Water Logger page!</p>
+
+<p>Here you can manage your water intake.</p>
+
+<p>To get started, you can log your water intake</p>
+
+<a class="btn btn-success" asp-area="" asp-page="/WaterLogger/Create">
+    Add Record
+</a>
+@* <button type="button" class="btn btn-success" onclick="calculate()">Calculate Total</button> *@
+<table id="records" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Records[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Records[0].Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Records[0].ContainerType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Records)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContainerType)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-area="" asp-page="/WaterLogger/Update" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-danger" asp-area="" asp-page="/WaterLogger/Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+
+        </tbody>
+</table>
+
+<div>
+    <h4>Total Quantity</h4>
+    <div id="totalQuantity">
+        @if (ViewData["Total"] != null)
+        {
+            <span>@ViewData["Total"]</span>
+        }
+        else
+        {
+            <span>0</span>
+        }
+     </div>
+</div>
+
+
+

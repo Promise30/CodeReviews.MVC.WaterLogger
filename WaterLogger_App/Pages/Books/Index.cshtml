@@ -1,0 +1,53 @@
+﻿@page
+@model HabitLogger_App.Pages.Books.IndexModel
+@{
+    ViewData["Title"] = "Reading Logger";
+}
+
+<h1>Book Logger</h1>
+<p>Welcome to the Books page!</p>
+<p>Here you can manage your books.</p>
+<p>To get started, you can add a new book</p>
+
+<a class="btn btn-success" asp-area="" asp-page="/Books/Create">
+    Add New Book
+</a>
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Books[0].Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Books[0].Author)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Books[0].Rating)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model.Books){
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Author)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" asp-area="" asp-page="/ReadingLogger/Create" asp-route-bookId="@item.Id">Add Reading Log</a>
+                        <a class="btn btn-primary" asp-area="" asp-page="/Books/Update" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-danger" asp-area="" asp-page="/Books/Delete" asp-route-id="@item.Id">Delete</a>
+                        <a class="btn btn-secondary" asp-area="" asp-page="/ReadingLogger/Details" asp-route-bookId="@item.Id">View Reading Logs</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

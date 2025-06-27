@@ -1,0 +1,43 @@
+﻿@page
+@model HabitLogger_App.Pages.ReadingLogger.UpdateModel
+@{
+    ViewData["Title"] = "Update Reading Log Entry";
+}
+<h2>Update Reading Log Entry</h2>
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form method="POST">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" asp-for="ReadingLog.Id" />
+            <div class="form-group">
+                <label asp-for="ReadingLog.BookId" class="control-label"></label>
+                <select asp-for="ReadingLog.BookId" asp-items="Model.BookSelectList" class="form-control">
+                    <option value="">-- Select Book --</option>
+                </select>
+                <span asp-validation-for="ReadingLog.BookId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReadingLog.Date"></label>
+                <input type="date" asp-for="ReadingLog.Date"  class="form-control" />
+                <span asp-validation-for="ReadingLog.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReadingLog.PagesRead"></label>
+                <input type="number" step="1" asp-for="ReadingLog.PagesRead" class="form-control" />
+                <span asp-validation-for="ReadingLog.PagesRead" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReadingLog.MinutesRead"></label>
+                <input type="number" step="1" asp-for="ReadingLog.MinutesRead" class="form-control" />
+                <span asp-validation-for="ReadingLog.MinutesRead" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-success" />
+            </div>
+            <a class="btn btn-secondary" asp-area="" asp-page="/ReadingLogger/Details" asp-route-bookId="@Model.ReadingLog.BookId"> Back to List</a>
+
+        </form>
+    </div>
+   
+</div>
